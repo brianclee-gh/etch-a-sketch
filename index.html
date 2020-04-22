@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-A-Sketch Project</title>
+</head>
+<body>
+    <div id="title">Etch-a-Sketch</div>
+    <div id="gameBoard">
+    <div id="buttonRow">
+        <ul id="buttons">
+            <li><button id="resetbutton" href="#">Reset</button></li>
+            <li><button id="erasebutton" href="#">Erase</button></li>
+            <li><button id="rainbowbutton" href="#">Color</button></li>
+            <li><button id="BWbutton" href="#">B&W</button></li>
+        </ul>
+            <div id="gsize">
+                <label id="gridsizetext">Grid Size:</label><br>
+                <input type="text" id="gridInput" value="16x16">
+                <button type="submit" id="submitbutton">Create</button>
+            </div>
+    </div>
+        <div id="grid">
+            <div id = "container"></div>
+        </div>
+    </div>
+</body>
+
+<script src="game.js"></script>
+</html>
