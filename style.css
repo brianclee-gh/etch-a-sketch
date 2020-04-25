@@ -1,7 +1,8 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-    background-color: cornflowerblue;
+    background-color: #42a5f5;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 .body {
       font-size: 19px;
@@ -11,27 +12,27 @@
       color: rgb(95, 99, 104);;
 }
 #gameBoard {
-    background-color: red;
-    height: 650px;
-    width: 600px;
+    background-color: #f44336;
+    height: 625px;
+    width: 550px;
     padding: 0 0 20px 0;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 20px;
 
 }
 #title {
-        display: flex;
-        justify-content: center;
-        font-family: Verdana, sans-serif;
-        text-shadow: 0px 0px 7px white;
-        font-size: 30px;
-        color: yellow;
+    display: flex;
+    justify-content: center;
+    font-family: 'Tangerine', cursive;
+    font-size: 55px;
+    color: #ffeb3b;
+    padding-top: 15px;
 }
 #grid {
     display:flex;
     justify-content: center;
     align-items: center;
-    padding-top:40px;
+    padding-top:20px;
 
 }
 #gsize {
@@ -43,8 +44,8 @@
     grid-gap: 0;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
-    height: 500px;
-    width: 500px;
+    height: 450px;
+    width: 450px;
     background-color: white;
 	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
@@ -72,7 +73,18 @@ li {
       margin-top: 0%;
       margin-bottom: -2%;
       width: 500px;
+      padding-top: 15px;
+      
 }
+
+.right {
+    float:right;
+}
+
+.left {
+    float: left;
+}
+
 #gridsizetext {
     font-size:14px;
     letter-spacing: 0.5px;
@@ -164,24 +176,25 @@ ul {
     min-width: 65px;
 
 }
+
+#newbutton {
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 0 10px;
+    margin: 10px 6px;
+    line-height: 25px;
+    height: 60px;
+    color: #5F6368;
+    text-align: center;
+    min-width: 65px;
+ 
+}
 #rainbowbutton:hover,
 #erasebutton:hover,
 #resetbutton:hover,
 #BWbutton:hover,
-#submitbutton:hover {
+#newbutton:hover {
 	box-shadow: 0 1px 5px black;
-}
-
-#submitbutton {
-    background-color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-radius: 5px;
-    font-size: 10px;
-    padding: 0px 0px;
-    margin: 10px 6px;
-    line-height: 20px;
-    height: 20px;
-    color: #5F6368;
-    text-align: center;
-    min-width: 65px;
 }

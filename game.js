@@ -5,6 +5,7 @@ const rainbowButton = document.querySelector("#rainbowbutton");
 const blackButton = document.querySelector("#BWbutton");
 const gridInput = document.getElementById("gridInput");
 const submitButton = document.querySelector("#submitbutton");
+const newButton = document.querySelector('#newbutton');
 const rainbowColors = [
     "red",
     "orange",
@@ -16,19 +17,22 @@ const rainbowColors = [
 ];
 let eraseFlag = false;
 let rainbowFlag = false;
-let blackFlag = true;
 
-function makeRows(grid_size) {
-    container.style.setProperty('--grid-rows', grid_size);
-    container.style.setProperty('--grid-cols', grid_size);
-    for (c = 0; c < (grid_size**2); c++) {
+
+function makeRows(num) {
+    container.style.setProperty('--grid-rows', num);
+    container.style.setProperty('--grid-cols', num);
+    for (c = 0; c < (num**2); c++) {
         let cell = document.createElement("div");
         cell.id = (c);
         container.appendChild(cell).className = "grid-item";
     };
 };
 
-//Button functions
+let defaultRows = 20;
+makeRows(defaultRows);
+
+// button functions
 function blackTile(e) {
     const tile = document.querySelector(`.grid-item[id="${e.target.id}"]`);
     tile.style.backgroundColor = "black";
@@ -61,14 +65,7 @@ function cellReset() {
 resetButton.addEventListener('click', (e) => {
     container.innerHTML = "";
     cellReset();
-    getUserInput(document.getElementById("gridInput").value);
-    if (newGridArray[0] > 100 || newGridArray[1] > 100) {
-        alert("Use a smaller grid size!")
-        return;
-    } else {
-        container.innerHTML = "";
-        makeRows(newGridArray[0], newGridArray[1]);
-    };
+    makeRows(defaultRows);
 });
 
 rainbowButton.addEventListener("click", (e) => {
@@ -104,60 +101,32 @@ blackButton.addEventListener("click", (e) => {
 
 });
 
-// user inputs for new grids
-let gridUserNum = "";
-let gridArray = [];
-
-function getUserInput(num) {
-    newGrid = stringtoArray(num);
-    gridArray = newGridArray;
-};
-
-function stringtoArray(num) {
-    newGridArray = [];
-    newGridArray = num.split("x");
-    return newGridArray
-};
-
-// new grid using create button
-submitButton.addEventListener("click", (e) => {
-    getUserInput(document.getElementById("gridInput").value);
-    rows = newGridArray[0];
-    cols = newGridArray[1];
-    if (rows > 100 || cols > 100 || rows < 1 || cols < 1) {
-        alert("Please enter numbers between 1 and 99");
-        return;
-    } else if (isNaN(rows) || isNaN(cols)) {
-        alert("Please type in a '10x10' format");
-        return;
-    } else { container.innerHTML = "";
-        makeRows(rows);
-    };
-
+newButton.addEventListener("click", (e) => {
+    new_Grid();
 });
 
-//new grid using Enter button
-const input = document.getElementById("gridInput");
-
-input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-        getUserInput(input.value)
-        rows = newGridArray[0];
-        cols = newGridArray[1];
-        if (rows > 100 || cols > 100 || rows < 1 || cols < 1) {
-            alert("Please enter numbers between 1 and 99");
-            return;
-        } else if (isNaN(rows) || isNaN(cols)) {
-            alert("Please type in a '10x10' format");
-            return;
-        } else {
+function new_Grid() {
+    container.innerHTML = "";
+    cellReset();
+    let userInput = prompt("Enter a grid size between 1-100");
+    newGridNum = parseInt(userInput);
+    defaultRows = newGridNum;
+    if (newGridNum > 100 || newGridNum < 1) {
+        alert("Number must be between 1 and 100!")
+        return;
+    } else if (Number.isNaN(newGridNum)) {
+        alert("Needs to be a number!")
+    } else {
         container.innerHTML = "";
-            makeRows(rows);
-        };
+        makeRows(newGridNum);
     }
-})
+}
 
-let grid_size = 16;
-makeRows(grid_size);
+document.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+        new_Grid();
+    }
+});
+
 
 
